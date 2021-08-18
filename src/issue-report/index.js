@@ -3,6 +3,7 @@ import {Container, TextField, Button, Grid}from '@material-ui/core';
 import HintReminder from './components/CategorySelector';
 import CategorySelector from './components/CategorySelector';
 import Screenshot from './components/Screenshot';
+import OtherDevice from './components/OtherDevice';
 
 
 // todo: 突然發現全頁面，不能截圖，所以還是要 popup，悲劇Q_Q
@@ -23,14 +24,6 @@ const Reporter = () => {
             label="電子信箱"/>
         </Grid>
         <Grid item xs={12}>
-          <TextField
-           fullWidth
-            multiline 
-            placeholder="把你遇到的問題告訴我們"
-            label="問題描述"
-          />
-        </Grid>
-        <Grid item xs={12}>
           <CategorySelector
            setHint={setHints}
           />
@@ -41,7 +34,18 @@ const Reporter = () => {
         }
         </Grid>
         <Grid item xs={12}>
+          <TextField
+           fullWidth
+            multiline 
+            placeholder="把你遇到的問題告訴我們"
+            label="問題描述"
+          />
+        </Grid>
+        <Grid item xs={12}>
           <Screenshot/>
+        </Grid>
+        <Grid item xs={12}>
+          <OtherDevice/>
         </Grid>
         <Grid item xs={12}>
           <Button onClick={handleOnclick}>送出</Button>
