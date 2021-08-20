@@ -4,6 +4,7 @@ import {FormControl, FormLabel, RadioGroup, FormControlLabel, Grid }from '@mater
 
 
 const HintRemider = (props) => {
+  console.log(props.hint)
   return (
     <>
       <Grid item xs={12}>

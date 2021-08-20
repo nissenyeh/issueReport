@@ -10,32 +10,18 @@ var dataObj = {
   current_Device: currentDevice,
   msgMajor: msgMajor,
   msgMinor: msgMinor,
-  answerList: answerList,
+  answerList: answerList, // 預計拔除 
   issue_Desc: $('#issueDesc').val(),
   url: window.location.href,
   is_Problem: isProblem,
   problem_Info: problemInfo,
   isNotCurrentDevice: $('#isNotCurrentDevice').prop('checked'),
-  isSlow: $('#isSlow').prop('checked'),
+  isSlow: $('#isSlow').prop('checked'), // 預計拔除 
   other_device_browser: $('#other_device_browser').val(),
   other_device_os: $('#other_device_os').val(),
   other_device_type: $('#other_device_type').val(),
-  junyi_network_result: junyiNetworkResult,
-  cloudfront_network_result: cloudfrontNetworkResult,
+  junyi_network_result: junyiNetworkResult, // 預計拔除 
+  cloudfront_network_result: cloudfrontNetworkResult, // 預計拔除 
   errorEventId: errorEventId,
-  allowDebug: $('input:radio[name=debugRadio]:checked').val() === 'yes',
+  allowDebug: $('input:radio[name=debugRadio]:checked').val() === 'yes',  // 預計拔除 
 };
-
-  //   $.ajax({
-  //     url: '/githubpost',
-  //     type: 'POST',
-  //     data: JSON.stringify(dataObj),
-  //     contentType: 'application/json',
-  //     dataType: 'json',
-  //     success: function () {
-        
-  //     },
-  //     error: function () {
-        
-  //     },
-  // });
