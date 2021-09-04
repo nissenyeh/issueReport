@@ -1,5 +1,6 @@
 export const BrowserList = [
   "Chrome",
+  "Edge",
   "Firefox",
   "Safari",
   "Internet Explorer 11",
@@ -14,6 +15,7 @@ export const OSList = [
   "Mac OS X",
   "Windows 7",
   "Windows XP",
+  "Ubuntu",
   "iOS",
   "Android",
   "其他，請在問題描述中告訴我們",

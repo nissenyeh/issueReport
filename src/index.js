@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import IssueReporter from './issue-report-junyi/IssueReporter'
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <h1>我是底圖</h1>
     <p>Hello</p>
-    <App />
+    <IssueReporter
+        isFromReportPage={false}
+      />
   </React.StrictMode>,
   document.getElementById('root')
 );

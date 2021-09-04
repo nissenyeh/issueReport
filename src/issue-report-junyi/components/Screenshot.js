@@ -1,60 +1,62 @@
 import React, { useEffect }from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Button }from '@material-ui/core';
 import html2canvas from 'html2canvas';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { title, detail } from '../style/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   input: {
     display: 'none',
   },
 }));
 
-const Screenshot = (prop) =>  {
+const imageStyle = {
+  border: "1px solid #6a6a6f"
+}
+
+const Screenshot = ({
+  isFromReportPage,
+  image,
+  setImage,
+}) =>  {
 
   const classes = useStyles();
 
-  const titleDescStyle = {
-    fontSize: "13px",
-    color: "#6a6a6f",
-    lineHeight: "8px"
-  }
-
-  const imageStyle = {
-    border: "1px solid #6a6a6f"
-  }
-
-  useEffect(()=>{
-    if(!prop.isFromReportPage){
-      autoScreenshot()
-    }
-  },[])
-
-  function autoScreenshot(){
-    html2canvas(document.body).then(function(canvas) {
-      let imgURL = canvas.toDataURL("image/png")
-      prop.setImage(imgURL)
+  function autoScreenshot() {
+    html2canvas(document.body, {
+      useCORS: true,
+    }).then((canvas) => {
+      const imgURL = canvas.toDataURL("image/png");
+      setImage(imgURL);
     });
   }
 
   function onUploadChange(event) {
     if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      let imgURL = URL.createObjectURL(img)
-      prop.setImage(imgURL);
+      const img = event.target.files[0];
+      const imgURL = URL.createObjectURL(img)
+      setImage(imgURL);
     }
   };
+
+  useEffect(()=>{
+    if(!isFromReportPage){
+      autoScreenshot();
+    }
+  },[])
 
   return (
     <>
      <Grid item xs={12}>
-      <p>問題截圖</p>
-      <p style={titleDescStyle}> 
+      <p style={title}>問題截圖</p>
+      <p style={detail}> 
         如果可以提供問題相關的截圖，可以幫我們更清楚、快速的理解問題喔！
       </p>
      </Grid>
-     {!prop.isFromReportPage && (
+     {!isFromReportPage && (
       <Grid item xs={12}>
         <p>如果自動截圖不符合實際狀況，請自行上傳截圖。</p> 
         <Button 
@@ -68,7 +70,7 @@ const Screenshot = (prop) =>  {
       <Grid item xs={12}>
         <img 
           style={imageStyle}
-          src={prop.image} alt="" width="100%" />
+          src={image} alt="" width="100%" />
         <input 
           id="icon-button-file"
           type="file" 
@@ -90,6 +92,12 @@ const Screenshot = (prop) =>  {
     </>
   );
 }
+
+Screenshot.propTypes = {
+  isFromReportPage: PropTypes.bool.isRequired,
+  image: PropTypes.string,
+  setImage: PropTypes.func.isRequired,
+};
 
 
 export default Screenshot
